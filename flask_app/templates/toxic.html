@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic_Comment_classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oleo+Script:wght@700&display=swap" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/toxic.css') }}"> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Poppins&family=Zen+Antique&display=swap');
+
+        body {
+            background-image: linear-gradient(to bottom right, rgb(117, 212, 250), rgb(250, 117, 184), rgb(250, 250, 152));
+            height: 100vh;
+            font-family: 'Anton', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            font-family: 'Zen Antique', serif;
+        }
+
+       .tableText{
+        font-size: 20px;
+       }
+
+    </style>
+
+
+</head>
+
+<body onload="myFunction()" class=" d-flex">
+    <div class="container">
+        <div class="heading row pt-5 pb-3 text-light">
+            <h1 class="text-center">Toxic Comment Classifier</h1>
+        </div>
+        <div class="subheading row text-center pb-3 text-light">
+            <h2>Enter Your Comment!</h2>
+        </div>
+        <div class="input row text-center">
+
+            <form action="{{ url_for('predict')}}" method="post" >
+                <!-- <div class="col-12 in ml-sm-7 pb-3 form-floating">
+                    <input id='text' type="text" name="text" placeholder="Enter your comment" required="required"
+                        size="37" style="font-size:25px;" />
+                </div> -->
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id='text'  name="text" placeholder="Enter Your Comment!">
+                    <label for="floatingInput" class="Secondary">Enter Your Comment!</label>
+                  </div>
+                <div class="col-12 bt mb-5">
+                    <button id='button' type="submit" class="btn btn-info btn-lg "> Predict</button>
+                </div>
+
+
+            </form>
+
+        </div>
+        <table class="table table-striped ">
+            
+              <tbody>
+                <tr>
+                  <td class="tableText">{{ pred_tox }}</td>
+                  <td class="tableText">{{ pred_ins }}</td>
+                </tr>
+                <tr>
+                    <td class="tableText">{{ pred_sev }}</td>
+                    <td class="tableText">{{ pred_thr }}</td>
+                </tr>
+                <tr>
+                  <td class="tableText">{{ pred_obs }}</td>
+                  <td class="tableText">{{ pred_ide }}</td>
+                </tr>
+              </tbody>
+          </table>
+        <!-- <div class="row op">
+            <h3>{{ pred_tox }} <br><br>
+                {{ pred_sev }} <br><br>
+                {{ pred_obs }} <br><br>
+                {{ pred_ins }} <br><br>
+                {{ pred_thr }} <br><br>
+                {{ pred_ide }}</h3>
+
+        </div> -->
+
+
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
